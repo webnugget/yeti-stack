@@ -1,0 +1,23 @@
+<div class="modal-overlay is-active" id="login-modal"  >
+  <aside id="login-modal-content" class="modal is-active">
+    <a data-ng-click="closeModal()" class="close-button">×</a>
+    <div class="grid-block vertical">
+      <h1 class="grid-content">Login</h1>
+      <form role="form" class="grid-block vertical">
+        <div class="grid-content">
+          <label for="username">Username</label>
+          <input type="text" ng-model="user.username" id="username" placeholder="Username">
+        </div>
+        <div class="grid-content">
+          <label for="password">Password</label>
+          <input type="password" id="password" ng-model="user.password" placeholder="Password">
+        </div>
+        <div class="grid-content"style="height:3rem "><span style="line-height:1.45rem" data-ng-if="message">{{message}}</span></div>
+        <div class="grid-content">
+          <button type="submit" class="button medium" ng-click="login(user)">Submit</button>
+          <a data-ng-click="closeModal('signup')" >No Account? Signup here!</a>
+        </div>
+      </form>
+    </div>
+  </aside>
+</div>

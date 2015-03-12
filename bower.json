@@ -1,0 +1,31 @@
+{
+    "name": "fapp-stack",
+    "version": "0.0.1",
+    "description": "FAPP-STACK based on Foundation for Apps",
+    "main": "gulpfile.js",
+    "keywords": [
+        "framework",
+        "angular",
+        "web",
+        "apps"
+    ],
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "foundation-apps": "~1.0.3",
+        "a0-angular-storage": "~0.0.9",
+        "angular-jwt": "~0.0.6",
+        "angular-modal-service": "~0.6.3",
+        "lodash": "~3.5.0"
+    },
+    "resolutions": {
+        "angular": "~1.3.4"
+    }
+}

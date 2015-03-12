@@ -1,0 +1,17 @@
+<ul class="primary condense menu-bar">
+     <li>
+          <a><strong>FAPP-Stack</strong></a>
+     </li>
+     <li>
+          <a ui-sref="home">Home</a>
+     </li>
+     <li>
+          <a ui-sref="user">User-Section</a>
+     </li>
+     <li data-ng-if="auth.checkRole('admin')"><a ui-sref="admin">Admin</a></li>
+     <li data-ng-if="!auth.user"><a ui-sref="login">Login</a></li>
+     <li data-ng-if="!auth.user"><a ui-sref="signup">Signup</a></li>
+     <li data-ng-if="auth.user"><a data-ng-click="auth.logout()">Logout</a></li>
+     
+     
+</ul>
