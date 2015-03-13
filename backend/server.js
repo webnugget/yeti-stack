@@ -41,8 +41,8 @@ app.use(function(err, req, res, next) {
 });
 
 
-
-app.use('/api', require('./modules/auth/routes/authRoutes'));
+//Auth-Routes
+app.use('/api/auth', require('./modules/auth/routes/authRoutes'));
 
 var port = process.env.PORT || 3000;
 

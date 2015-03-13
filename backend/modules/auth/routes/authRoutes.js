@@ -11,10 +11,10 @@ var jwtCheck = jwt({
 var app = module.exports = express.Router();
 
 
-app.post('/auth', authController.login);
-app.post('/auth/signup', authController.signUp);
+app.post('', authController.login);
+app.post('/signup', authController.signUp);
 
 //The following routes are only available for Users with a valid token
-app.use('/auth/newtoken', jwtCheck);
+app.use('/newtoken', jwtCheck);
 
-app.get('/auth/newtoken', authController.newToken);
+app.get('/newtoken', authController.newToken);
