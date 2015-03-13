@@ -29,3 +29,12 @@ You'll need the following software installed to get started.
 	<li>open http://localhost:3000 in your browser</li>
 </ul>
 
+
+##Demo User
+
+User: admin 
+Password: admin
+
+User: user
+Password: user
+
