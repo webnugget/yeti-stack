@@ -1,6 +1,5 @@
 'use strict';
 var _ = require('lodash'),
-    config = require('../../../../config'),
     jwt = require('jsonwebtoken');
 
 var users = [{
@@ -16,8 +15,8 @@ var users = [{
 }];
 
 function createToken(user) {
-    return jwt.sign(_.omit(user, 'password'), config.secret, {
-        expiresInMinutes: config.tokenExpirationTime
+    return jwt.sign(_.omit(user, 'password'), process.env.SECRET || '23fWtahDYE3dfirAHrJhzrUEoslIxqwcDN', {
+        expiresInMinutes: process.env.TOKENEXPIRATIONTIME || 1440
     });
 }
 

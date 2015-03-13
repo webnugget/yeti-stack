@@ -1,27 +1,39 @@
 'use strict';
 var logger = require('morgan')('tiny'),
     cors = require('cors'),
+    debug = require('debug')('app:' + process.pid),
     http = require('http'),
     express = require('express'),
     errorhandler = require('errorhandler'),
     cors = require('cors'),
     dotenv = require('dotenv'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose');
 
 var app = express();
 
 dotenv.load();
+// MongoDB
+mongoose.set('debug', false);
+mongoose.connect(process.env.DATABASE || 'localhost/fapp-stack-dev');
+mongoose.connection.on('error', function() {
+    debug('Mongoose connection error');
+});
+mongoose.connection.once('open', function callback() {
+    debug('Mongoose connected to the database');
+});
+
 
 // Parsers
-// old version of line
-// app.use(bodyParser.urlencoded());
-// new version of line
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
 app.use(bodyParser.json());
 app.use(cors());
+
+
+
 if (process.env.NODE_ENV === 'development') {
     app.use(logger);
     app.use(errorhandler());  
