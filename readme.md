@@ -29,6 +29,10 @@ You'll need the following software installed to get started.
 	<li>open http://localhost:3000 in your browser</li>
 </ul>
 
+##Database
+Currently there is no Database, just some hardcoded Users.
+If a new User is registered, it's saved in Memory until the
+serverprocess is restarted.
 
 ##Demo User
 
