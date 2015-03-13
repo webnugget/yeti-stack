@@ -1,5 +1,5 @@
 'use strict';
-var logger = require('morgan')('combined'),
+var logger = require('morgan')('tiny'),
     cors = require('cors'),
     http = require('http'),
     express = require('express'),
