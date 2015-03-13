@@ -84,13 +84,11 @@ gulp.task('copy', function() {
 // Compiles Sass
 gulp.task('sass', function() {
     return gulp.src('client/assets/scss/app.scss')
-        .pipe($.rubySass({
-            loadPath: sassPaths,
-            style: 'nested',
-            bundleExec: true
-        })).on('error', function(e) {
-            console.log(e);
-        })
+        .pipe($.sass({
+            includePaths: sassPaths,
+            outputStyle: 'nested',
+            errLogToConsole: true
+        }))
         .pipe($.autoprefixer({
             browsers: ['last 2 versions', 'ie 10']
         }))
