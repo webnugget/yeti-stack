@@ -15,7 +15,7 @@ var users = [{
 }];
 
 function createToken(user) {
-    return jwt.sign(_.omit(user, 'password'), process.env.SECRET || '23fWtahDYE3dfirAHrJhzrUEoslIxqwcDN', {
+    return jwt.sign(_.omit(user, 'password'), process.env.SECRET || 'fapp-stack-secret', {
         expiresInMinutes: process.env.TOKENEXPIRATIONTIME || 1440
     });
 }

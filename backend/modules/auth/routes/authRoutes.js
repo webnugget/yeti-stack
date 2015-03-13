@@ -1,11 +1,10 @@
 'use strict';
 var express = require('express'),
     authController = require('../controller/authController.js'),
-    jwt = require('express-jwt'),
-    config = require('../../../../config');
+    jwt = require('express-jwt');
 
 var jwtCheck = jwt({
-    secret: config.secret
+    secret: process.env.SECRET || 'fapp-stack-secret'
 });
 
 var app = module.exports = express.Router();

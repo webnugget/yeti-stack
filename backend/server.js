@@ -10,9 +10,12 @@ var logger = require('morgan')('tiny'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose');
 
+//load Enviromentvariables
+dotenv.load();
+
+//Init Express
 var app = express();
 
-dotenv.load();
 // MongoDB
 mongoose.set('debug', false);
 mongoose.connect(process.env.DATABASE || 'localhost/fapp-stack-dev');
@@ -28,12 +31,13 @@ mongoose.connection.once('open', function callback() {
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
 app.use(bodyParser.json());
+
+//CORS
 app.use(cors());
 
 
-
+//dev-middleware
 if (process.env.NODE_ENV === 'development') {
     app.use(logger);
     app.use(errorhandler());  
@@ -42,6 +46,7 @@ if (process.env.NODE_ENV === 'development') {
     }));
 }
 
+//static fileserver
 app.use(express.static(__dirname + '/../www'));
 
 app.use(function(err, req, res, next) {
@@ -53,14 +58,14 @@ app.use(function(err, req, res, next) {
 });
 
 
-//Auth-Routes
+//Routes
 app.use('/api/auth', require('./modules/auth/routes/authRoutes'));
 
-var port = process.env.PORT || 3000;
 
-http.createServer(app).listen(port, function(err) {
+//start server
+http.createServer(app).listen(process.env.PORT || 3000, function(err) {
     if (err) {
         console.log(err);
     }
-    console.log('listening in http://localhost:' + port);
+    console.log('FAPP-STACK launched on PORT' + process.env.PORT || 3000);
 });
