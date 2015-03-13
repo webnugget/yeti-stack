@@ -163,7 +163,9 @@ gulp.task('build', function(cb) {
 gulp.task('default', function() {
 
     //Start livereload-server
-    $.livereload.listen();
+    $.livereload.listen({
+        quiet: true
+    });
     // Run the server after the build
     sequence(['build', 'backend:start']);
     // Watch Sass
