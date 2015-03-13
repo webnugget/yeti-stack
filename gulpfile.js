@@ -74,7 +74,8 @@ gulp.task('copy', function() {
 
     // Foundation's Angular partials
     return gulp.src(['./bower_components/foundation-apps/js/angular/components/**/*.html'])
-        .pipe(gulp.dest('./' + buildFolder + '/components/'));
+        .pipe(gulp.dest('./' + buildFolder + '/components/'))
+        .pipe($.livereload());
 });
 
 // Compiles Sass
@@ -88,7 +89,8 @@ gulp.task('sass', function() {
         .pipe($.autoprefixer({
             browsers: ['last 2 versions', 'ie 10']
         }))
-        .pipe(gulp.dest('./' + buildFolder + '/assets/css/'));
+        .pipe(gulp.dest('./' + buildFolder + '/assets/css/'))
+        .pipe($.livereload());
 });
 
 // Compiles and copies the Foundation for Apps JavaScript, as well as your app's custom JS
@@ -103,6 +105,7 @@ gulp.task('uglify', function() {
         }))
         .pipe($.concat('foundation.js'))
         .pipe(gulp.dest('./' + buildFolder + '/assets/js/'));
+
     // App JavaScript
     return gulp.src(appJS)
         .pipe($.uglify({
@@ -112,7 +115,8 @@ gulp.task('uglify', function() {
             console.log(e);
         }))
         .pipe($.concat('app.js'))
-        .pipe(gulp.dest('./' + buildFolder + '/assets/js/'));
+        .pipe(gulp.dest('./' + buildFolder + '/assets/js/'))
+        .pipe($.livereload());
 });
 
 // Copies your app's page templates and generates URLs for them
@@ -125,21 +129,10 @@ gulp.task('copy-templates', ['copy'], function() {
             path: buildFolder + '/assets/js/routes.js',
             root: 'client/assets/modules/'
         }))
-        .pipe(gulp.dest('./' + buildFolder));
+        .pipe(gulp.dest('./' + buildFolder))
+        .pipe($.livereload());
 });
 
-// Starts a test server, which you can view at http://localhost:8080
-gulp.task('devserver:start', function() {
-    var webroot = './' + buildFolder;
-    gulp.src(webroot)
-        .pipe($.webserver({
-            port: 8080,
-            host: 'localhost',
-            fallback: 'index.html',
-            livereload: true,
-            open: false
-        }));
-});
 
 gulp.task('backend:start', function() {
     $.nodemon({
@@ -168,8 +161,11 @@ gulp.task('build', function(cb) {
 
 // Default task: builds your app, starts a server, and recompiles assets when they change
 gulp.task('default', function() {
+
+    //Start livereload-server
+    $.livereload.listen();
     // Run the server after the build
-    sequence(['build', 'backend:start'], 'devserver:start');
+    sequence(['build', 'backend:start']);
     // Watch Sass
     gulp.watch(['./client/assets/scss/**/*', './scss/**/*'], ['sass']);
     // Watch JavaScript
