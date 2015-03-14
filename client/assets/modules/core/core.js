@@ -1,6 +1,2 @@
 'use strict';
-angular.module('core', [
-    'ui.router',
-    'auth',
-    'utils'
-]);
+angular.module('core', ['ui.router', 'auth', 'utils']);

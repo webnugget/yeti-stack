@@ -1,7 +1,5 @@
 'use strict';
-angular.module('user', [
-    'ui.router'
-])
+angular.module('user', ['ui.router'])
     .config(function($stateProvider) {
         $stateProvider.state('user', {
             url: '/user',
