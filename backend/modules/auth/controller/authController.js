@@ -1,6 +1,6 @@
 'use strict';
-var _ = require('lodash'),
-    jwt = require('jsonwebtoken');
+var _ = rq('lodash'),
+    jwt = rq('jsonwebtoken');
 
 var users = [{
     id: 1,

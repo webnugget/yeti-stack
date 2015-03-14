@@ -1,14 +1,17 @@
 'use strict';
-var logger = require('morgan')('tiny'),
-    cors = require('cors'),
-    debug = require('debug')('app:' + process.pid),
-    http = require('http'),
-    express = require('express'),
-    errorhandler = require('errorhandler'),
-    cors = require('cors'),
-    dotenv = require('dotenv'),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose');
+//Init rekuire
+global.rq = require('rekuire');
+
+var logger = rq('morgan')('tiny'),
+    cors = rq('cors'),
+    debug = rq('debug')('app:' + process.pid),
+    http = rq('http'),
+    express = rq('express'),
+    errorhandler = rq('errorhandler'),
+    cors = rq('cors'),
+    dotenv = rq('dotenv'),
+    bodyParser = rq('body-parser'),
+    mongoose = rq('mongoose');
 
 //load Enviromentvariables
 dotenv.load();
@@ -59,13 +62,14 @@ app.use(function(err, req, res, next) {
 
 
 //Routes
-app.use('/api/auth', require('./modules/auth/routes/authRoutes'));
+app.use('/api/auth', rq('authRoutes'));
 
 
 //start server
-http.createServer(app).listen(process.env.PORT || 3000, function(err) {
+var port = process.env.PORT || 3000;
+http.createServer(app).listen(port, function(err) {
     if (err) {
         console.log(err);
     }
-    console.log('FAPP-STACK launched on PORT' + process.env.PORT || 3000);
+    console.log('FAPP-STACK launched on PORT' + port);
 });

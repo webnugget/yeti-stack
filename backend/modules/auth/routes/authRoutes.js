@@ -1,7 +1,7 @@
 'use strict';
-var express = require('express'),
-    authController = require('../controller/authController.js'),
-    jwt = require('express-jwt');
+var express = rq('express'),
+    authController = rq('authController'),
+    jwt = rq('express-jwt');
 
 var jwtCheck = jwt({
     secret: process.env.SECRET || 'fapp-stack-secret'
