@@ -14,6 +14,7 @@ FAPP-Stack is based on Foundation for Apps.
 You'll need the following software installed to get started.
 
   * [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
+  *[MongoDB](http://www.mongodb.org/):Use the installer for your OS.
   * [Git](http://git-scm.com/downloads): Use the installer for your OS.
     * Windows users can also try [Git for Windows](http://git-for-windows.github.io/).
   * [Gulp](http://gulpjs.com/) and [Bower](http://bower.io): Run `[sudo] npm install -g gulp bower`
@@ -29,16 +30,12 @@ You'll need the following software installed to get started.
 	<li>open http://localhost:3000 in your browser</li>
 </ul>
 
-##Database
-Currently there is no Database, just some hardcoded Users.
-If a new User is registered, it's saved in Memory until the
-serverprocess is restarted.
+##Create Admin-User
+To create an administrative Account just run the following command from the project-root.
 
-##Demo User
+```node createAdmin.js username password email```
 
-User: admin 
-Password: admin
+and replace username password and email with your account Details.
 
-User: user
-Password: user
+ 
 
