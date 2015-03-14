@@ -1,10 +1,19 @@
-(function() {
+(function () {
     'use strict';
-    angular.module('application', ['ui.router', 'ngAnimate',
+    angular.module('application', [
+        'ui.router',
+        'ngAnimate',
         //app modules
-        'core', 'auth', 'user', 'angular-jwt', 'angular-storage', 'angularModalService',
+        'core',
+        'auth',
+        'user',
+        'angular-jwt',
+        'angular-storage',
+        'angularModalService',
         //foundation
-        'foundation', 'foundation.dynamicRouting', 'foundation.dynamicRouting.animations'
+        'foundation',
+        'foundation.dynamicRouting',
+        'foundation.dynamicRouting.animations'
     ])
         .config(config)
         .constant('API_URL', '/api')
@@ -18,7 +27,7 @@
             requireBase: false
         });
         $locationProvider.hashPrefix('!');
-        jwtInterceptorProvider.tokenGetter = function(API_URL, store, config, AuthFactory, jwtHelper) {
+        jwtInterceptorProvider.tokenGetter = function (API_URL, store, config, AuthFactory, jwtHelper) {
             var token = store.get('token');
             //Check if token exists
             if (token) {
@@ -53,7 +62,7 @@
 
     function run($rootScope, $state, store, jwtHelper, ModalService, AuthFactory) {
         FastClick.attach(document.body);
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
             function showLoginModal(requiredRoles) {
                 var modalOptions = {
                     templateUrl: 'templates/auth/login-modal.html',
@@ -63,8 +72,8 @@
                     }
                 };
                 ModalService.showModal(modalOptions)
-                    .then(function(modal) {
-                        modal.close.then(function(result) {
+                    .then(function (modal) {
+                        modal.close.then(function (result) {
                             if (result === 'signup') {
                                 $state.go('signup');
                             } else if (result) {

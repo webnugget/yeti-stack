@@ -1,6 +1,6 @@
 'use strict';
 angular.module('auth', ['ui.router', 'angular-storage'])
-    .config(function($stateProvider) {
+    .config(function ($stateProvider) {
         $stateProvider.state('login', {
             url: '/login',
             controller: 'LoginController',

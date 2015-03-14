@@ -1,6 +1,6 @@
 'use strict';
 angular.module('user', ['ui.router'])
-    .config(function($stateProvider) {
+    .config(function ($stateProvider) {
         $stateProvider.state('user', {
             url: '/user',
             templateUrl: 'templates/user/user.html',

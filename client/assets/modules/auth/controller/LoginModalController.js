@@ -1,8 +1,8 @@
 'use strict';
 angular.module('auth')
-    .controller('LoginModalController', function($scope, $element, close, roles, AuthFactory) {
+    .controller('LoginModalController', function ($scope, $element, close, roles, AuthFactory) {
         $scope.user = {};
-        $scope.login = function(user) {
+        $scope.login = function (user) {
             AuthFactory.login(user)
                 .then(function success(response) {
                     $scope.message = response.data;
@@ -21,7 +21,7 @@ angular.module('auth')
                     $scope.message = err.data;
                 });
         };
-        $scope.closeModal = function(state) {
+        $scope.closeModal = function (state) {
             if (state) {
                 close(state);
             } else {
