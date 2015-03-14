@@ -71,5 +71,5 @@ http.createServer(app).listen(port, function(err) {
     if (err) {
         console.log(err);
     }
-    console.log('FAPP-STACK launched on PORT' + port);
+    console.log('FAPP-STACK launched on PORT ' + port);
 });
