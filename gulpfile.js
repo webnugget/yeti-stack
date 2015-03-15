@@ -23,11 +23,11 @@ var appJS = ['client/assets/modules/app.js', 'client/assets/modules/**/*.js'];
 // 3. TASKS
 // - - - - - - - - - - - - - - -
 // Cleans the build directory
-gulp.task('clean', function(cb) {
+gulp.task('clean', function (cb) {
     rimraf('./' + buildFolder, cb);
 });
 // Copies user-created files and Foundation assets
-gulp.task('copy', function() {
+gulp.task('copy', function () {
     var dirs = ['./client/**/*.*', '!./client/assets/{scss,modules}/**/*.*'];
     // Everything in the client folder except templates, Sass, and JS
     gulp.src(dirs, {
@@ -43,7 +43,7 @@ gulp.task('copy', function() {
         .pipe($.livereload());
 });
 // Compiles Sass
-gulp.task('sass', function() {
+gulp.task('sass', function () {
     return gulp.src('client/assets/scss/app.scss')
         .pipe($.sass({
             includePaths: sassPaths,
@@ -57,25 +57,30 @@ gulp.task('sass', function() {
         .pipe($.livereload());
 });
 // Compiles and copies the Foundation for Apps JavaScript, as well as your app's custom JS
-gulp.task('uglify', function() {
+gulp.task('uglify', function () {
     // Foundation JavaScript
     gulp.src(foundationJS)
         .pipe($.uglify({
                 beautify: true,
                 mangle: false
             })
-            .on('error', function(e) {
+            .on('error', function (e) {
                 console.log(e);
             }))
         .pipe($.concat('foundation.js'))
         .pipe(gulp.dest('./' + buildFolder + '/assets/js/'));
     // App JavaScript
     return gulp.src(appJS)
+        .pipe($.ngAnnotate({
+            remove: true,
+            add: true,
+            single_quotes: true
+        }))
         .pipe($.uglify({
                 beautify: true,
                 mangle: false
             })
-            .on('error', function(e) {
+            .on('error', function (e) {
                 console.log(e);
             }))
         .pipe($.concat('app.js'))
@@ -83,9 +88,9 @@ gulp.task('uglify', function() {
         .pipe($.livereload());
 });
 // Copies your app's page templates and generates URLs for them
-gulp.task('copy-templates', ['copy'], function() {
+gulp.task('copy-templates', ['copy'], function () {
     return gulp.src('./client/assets/modules/**/templates/**/*.html')
-        .pipe($.rename(function(path) {
+        .pipe($.rename(function (path) {
             path.dirname = '/templates/' + path.dirname.replace('/templates', '');
         }))
         .pipe(router({
@@ -95,7 +100,7 @@ gulp.task('copy-templates', ['copy'], function() {
         .pipe(gulp.dest('./' + buildFolder))
         .pipe($.livereload());
 });
-gulp.task('backend:start', function() {
+gulp.task('backend:start', function () {
     $.nodemon({
         script: './backend/server.js',
         ext: 'html js',
@@ -105,20 +110,20 @@ gulp.task('backend:start', function() {
             'DEBUG': 'app:*'
         }
     })
-        .on('restart', function() {
+        .on('restart', function () {
             console.log('api restarted!');
         });
 });
 // Builds your entire app once, without starting a server
-gulp.task('build', function(cb) {
-    sequence('clean', ['copy', 'sass', 'uglify'], 'copy-templates', function() {
+gulp.task('build', function (cb) {
+    sequence('clean', ['copy', 'sass', 'uglify'], 'copy-templates', function () {
         console.log('Successfully built.');
         // Notify gulp that build has completed
         cb();
     });
 });
 // Default task: builds your app, starts a server, and recompiles assets when they change
-gulp.task('default', function() {
+gulp.task('default', function () {
     //Start livereload-server
     $.livereload.listen({
         quiet: true

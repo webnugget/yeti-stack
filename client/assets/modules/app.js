@@ -18,10 +18,9 @@
         .config(config)
         .constant('API_URL', '/api')
         .run(run);
-    config.$inject = ['$urlRouterProvider', '$locationProvider', '$httpProvider', 'jwtInterceptorProvider'];
 
-    function config($urlProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
-        $urlProvider.otherwise('/');
+    function config($urlRouterProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
+        $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode({
             enabled: false,
             requireBase: false
