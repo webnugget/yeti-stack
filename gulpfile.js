@@ -14,12 +14,34 @@ var gulp = require('gulp'),
 // 2. SETTINGS VARIABLES
 // - - - - - - - - - - - - - - -
 var buildFolder = 'www';
-// Sass will check these folders for files when you use @import.
-var sassPaths = ['client/assets/scss', 'bower_components/foundation-apps/scss'];
-// These files include Foundation for Apps and its dependencies
-var foundationJS = ['bower_components/fastclick/lib/fastclick.js', 'bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js', 'bower_components/tether/tether.js', 'bower_components/lodash/lodash.min.js', 'bower_components/angular/angular.js', 'bower_components/angular-modal-service/dst/angular-modal-service.min.js', 'bower_components/a0-angular-storage/dist/angular-storage.min.js', 'bower_components/angular-jwt/dist/angular-jwt.min.js', 'bower_components/angular-animate/angular-animate.js', 'bower_components/angular-ui-router/release/angular-ui-router.js', 'bower_components/foundation-apps/js/vendor/**/*.js', 'bower_components/foundation-apps/js/angular/**/*.js', '!bower_components/foundation-apps/js/angular/app.js'];
-// These files are for your app's JavaScript
-var appJS = ['client/assets/modules/app.js', 'client/assets/modules/**/*.js'];
+var paths = {
+    // Sass will check these folders for files when you use @import.
+    sass: [
+    'client/assets/scss',
+    'bower_components/foundation-apps/scss'
+    ],
+    // all JS dependencies
+    vendorJS: [
+    'bower_components/fastclick/lib/fastclick.js',
+    'bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js',
+    'bower_components/tether/tether.js',
+    'bower_components/lodash/lodash.min.js',
+    'bower_components/angular/angular.js',
+    'bower_components/angular-modal-service/dst/angular-modal-service.min.js',
+    'bower_components/a0-angular-storage/dist/angular-storage.min.js',
+    'bower_components/angular-jwt/dist/angular-jwt.min.js',
+    'bower_components/angular-animate/angular-animate.js',
+    'bower_components/angular-ui-router/release/angular-ui-router.js',
+    'bower_components/foundation-apps/js/vendor/**/*.js',
+    'bower_components/foundation-apps/js/angular/**/*.js',
+    '!bower_components/foundation-apps/js/angular/app.js'
+    ],
+    // These files are for your app's JavaScript
+    appJS: [
+    'client/assets/modules/app.js',
+    'client/assets/modules/**/*.js'
+    ]
+};
 // 3. TASKS
 // - - - - - - - - - - - - - - -
 // Cleans the build directory
@@ -46,7 +68,7 @@ gulp.task('copy', function () {
 gulp.task('sass', function () {
     return gulp.src('client/assets/scss/app.scss')
         .pipe($.sass({
-            includePaths: sassPaths,
+            includePaths: paths.sass,
             outputStyle: 'nested',
             errLogToConsole: true
         }))
@@ -59,7 +81,7 @@ gulp.task('sass', function () {
 // Compiles and copies the Foundation for Apps JavaScript, as well as your app's custom JS
 gulp.task('uglify', function () {
     // Foundation JavaScript
-    gulp.src(foundationJS)
+    gulp.src(paths.vendorJS)
         .pipe($.uglify({
                 beautify: true,
                 mangle: false
@@ -67,10 +89,10 @@ gulp.task('uglify', function () {
             .on('error', function (e) {
                 console.log(e);
             }))
-        .pipe($.concat('foundation.js'))
+        .pipe($.concat('vendor.js'))
         .pipe(gulp.dest('./' + buildFolder + '/assets/js/'));
     // App JavaScript
-    return gulp.src(appJS)
+    return gulp.src(paths.appJS)
         .pipe($.ngAnnotate({
             remove: true,
             add: true,
