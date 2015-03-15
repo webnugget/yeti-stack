@@ -22,7 +22,8 @@
 	"globals": { // Globals variables.
 		"angular": true,
 		"io": true,
-		"rq":true,//rekuire global variable
+		"rq":true,//rekuire global variable,
+		"FastClick":true,
 		"ApplicationConfiguration": true
 	},
 	"predef": [ // Extra globals.

@@ -1,23 +1,5 @@
 (function () {
     'use strict';
-    angular.module('application', [
-        'ui.router',
-        'ngAnimate',
-        //app modules
-        'core',
-        'auth',
-        'user',
-        'angular-jwt',
-        'angular-storage',
-        'angularModalService',
-        //foundation
-        'foundation',
-        'foundation.dynamicRouting',
-        'foundation.dynamicRouting.animations'
-    ])
-        .config(config)
-        .constant('API_URL', '/api')
-        .run(run);
 
     function config($urlRouterProvider, $locationProvider, $httpProvider, jwtInterceptorProvider) {
         $urlRouterProvider.otherwise('/');
@@ -61,7 +43,7 @@
 
     function run($rootScope, $state, store, jwtHelper, ModalService, AuthFactory) {
         FastClick.attach(document.body);
-        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
             function showLoginModal(requiredRoles) {
                 var modalOptions = {
                     templateUrl: 'templates/auth/login-modal.html',
@@ -115,4 +97,22 @@
             }
         });
     }
+    angular.module('application', [
+        'ui.router',
+        'ngAnimate',
+        //app modules
+        'core',
+        'auth',
+        'user',
+        'angular-jwt',
+        'angular-storage',
+        'angularModalService',
+        //foundation
+        'foundation',
+        'foundation.dynamicRouting',
+        'foundation.dynamicRouting.animations'
+    ])
+        .config(config)
+        .constant('API_URL', '/api')
+        .run(run);
 })();
