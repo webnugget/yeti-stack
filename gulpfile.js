@@ -77,7 +77,7 @@ gulp.task('uglify', function () {
             single_quotes: true
         }))
         .pipe($.jshint())
-        .pipe($.jshint.reporter('default'))
+        .pipe($.jshint.reporter('checkstyle'))
         .pipe($.uglify({
                 beautify: true,
                 mangle: false
