@@ -13,8 +13,6 @@ var logger = rq('morgan')('tiny'),
     mongoose = rq('mongoose');
 //load Enviromentvariables
 dotenv.load();
-console.log(process.env.PORT);
-console.log(process.env.APPNAME);
 //Init Express
 var app = express();
 // MongoDB
