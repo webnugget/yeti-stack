@@ -4,11 +4,10 @@ var _ = rq('lodash'),
     User = rq('userModel');
 
 function createToken(user) {
-    var userObject = user.toObject();
     // delete properties that should not be included in token
-    delete userObject.password;
-    delete userObject.__v;
-    return jwt.sign(userObject, process.env.SECRET || 'fapp-stack-secret', {
+    delete user.password;
+    delete user.__v;
+    return jwt.sign(user, process.env.SECRET || 'fapp-stack-secret', {
         expiresInMinutes: process.env.TOKENEXPIRATIONTIME || 1440
     });
 }
@@ -31,7 +30,7 @@ module.exports.login = function (req, res) {
                     if (isMatch && !err) {
                         res.status(201)
                             .send({
-                                token: createToken(user)
+                                token: createToken(user.toObject())
                             });
                     } else {
                         return res.status(401)
@@ -65,7 +64,7 @@ module.exports.signUp = function (req, res) {
                     } else {
                         return res.status(201)
                             .send({
-                                token: createToken(user)
+                                token: createToken(user.toObject())
                             });
                     }
                 });
