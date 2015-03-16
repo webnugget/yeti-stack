@@ -26,6 +26,8 @@ You'll need the following software installed to get started.
 	<li>cd ./fapp-stack</li>
 	<li>npm install</li>
 	<li>bower install</li>
+	<li>rename default.env to .env <br>
+	and fill in your enviromentvariables</li>
 	<li>npm start</li>
 	<li>open http://localhost:3000 in your browser</li>
 </ul>
