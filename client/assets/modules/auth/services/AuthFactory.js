@@ -43,6 +43,27 @@ angular.module('auth')
                     return err;
                 });
         };
+        auth.forgotPassword = function (user) {
+            return $http.post(API_URL + '/auth/forgotpassword', user)
+                .then(function success(response) {
+                    return response;
+                }, function error(err) {
+                    return err;
+                });
+        };
+        auth.resetPassword = function (user, resetToken) {
+            return $http.post(API_URL + '/auth/resetpassword/' + resetToken, user)
+                .then(function success(response) {
+                    store.set('token', response.data.token);
+                    auth.user = jwtHelper.decodeToken(response.data.token);
+                    console.log('new token set');
+                    return {
+                        data: 'password changed...'
+                    };
+                }, function error(err) {
+                    return err;
+                });
+        };
         auth.checkRole = function (roles) {
             var token = store.get('token') || undefined,
                 decoded;

@@ -13,12 +13,14 @@ var logger = rq('morgan')('tiny'),
     mongoose = rq('mongoose');
 //load Enviromentvariables
 dotenv.load();
+console.log(process.env.PORT);
+console.log(process.env.APPNAME);
 //Init Express
 var app = express();
 // MongoDB
 mongoose.set('debug', false);
 mongoose.connect(process.env.DATABASE || 'localhost/fapp-stack-dev');
-mongoose.connection.on('error', function() {
+mongoose.connection.on('error', function () {
     debug('Mongoose connection error');
 });
 mongoose.connection.once('open', function callback() {
@@ -41,7 +43,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 //static fileserver
 app.use(express.static(__dirname + '/../www'));
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     if (err.name === 'StatusError') {
         res.send(err.status, err.message);
     } else {
@@ -53,7 +55,7 @@ app.use('/api/auth', rq('authRoutes'));
 //start server
 var port = process.env.PORT || 3000;
 http.createServer(app)
-    .listen(port, function(err) {
+    .listen(port, function (err) {
         if (err) {
             console.log(err);
         }

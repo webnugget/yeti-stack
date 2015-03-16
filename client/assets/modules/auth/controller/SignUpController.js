@@ -4,8 +4,8 @@ angular.module('auth')
         $scope.user = {};
         $scope.createUser = function (user) {
             AuthFactory.signup(user)
-                .then(function success(response) {
-                    $scope.message = response.data;
+                .then(function success() {
+                    // $scope.message = response.data;
                 }, function error(err) {
                     $scope.message = err.data;
                 });

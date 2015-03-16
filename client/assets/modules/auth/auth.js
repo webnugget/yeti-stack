@@ -11,6 +11,16 @@ angular.module('auth', [
             controller: 'LoginController',
             templateUrl: 'templates/auth/login.html'
         })
+            .state('resetpassword', {
+                url: '/reset/:resetToken',
+                controller: 'ResetPasswordController',
+                templateUrl: 'templates/auth/reset-password.html'
+            })
+            .state('forgotpassword', {
+                url: '/forgotpassword',
+                controller: 'ForgotPasswordController',
+                templateUrl: 'templates/auth/forgot-password.html'
+            })
             .state('signup', {
                 url: '/signup',
                 controller: 'SignUpController',
@@ -63,6 +73,8 @@ angular.module('auth', [
                         modal.close.then(function (result) {
                             if (result === 'signup') {
                                 $state.go('signup');
+                            } else if (result === 'forgotpassword') {
+                                $state.go('forgotpassword');
                             } else if (result) {
                                 $state.go(toState.name);
                             } else {

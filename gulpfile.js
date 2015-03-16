@@ -99,7 +99,7 @@ gulp.task('uglify', function () {
             single_quotes: true
         }))
         .pipe($.jshint())
-        .pipe($.jshint.reporter('checkstyle'))
+        .pipe($.jshint.reporter('default'))
         .pipe($.uglify({
                 beautify: true,
                 mangle: false
