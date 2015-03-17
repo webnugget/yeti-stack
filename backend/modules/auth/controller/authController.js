@@ -96,7 +96,7 @@ module.exports.forgotPassword = function (req, res) {
     },
     function (token, done) {
             User.findOne({
-                email: req.body.email
+                username: req.body.username
             }, function (err, user) {
                 if (!user) {
                     done('no user found for following email: ' + req.body.email);
@@ -116,7 +116,8 @@ module.exports.forgotPassword = function (req, res) {
             };
             //authMailer needs following params
             //reciever,subject,template,context,callback
-            authMailer(user.email, 'Reset your password for ' + process.env.APPNAME, 'forgotpassword', context, done);
+            authMailer(user.email, 'Reset your password for ' + process.env.APPNAME, 'forgotpassword', context);
+            done();
     }
   ], function (err) {
         if (err) {
