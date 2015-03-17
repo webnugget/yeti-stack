@@ -65,6 +65,11 @@ module.exports.signUp = function (req, res) {
                         return res.status(500)
                             .send("Something went wrong while creating your account");
                     } else {
+                        //authMailer needs following params
+                        //reciever,subject,template,context,callback
+                        authMailer(user.email, 'Your registration for ' + process.env.APPNAME, 'signup', {
+                            user: user
+                        });
                         return res.status(201)
                             .send({
                                 token: createToken(user.toObject())

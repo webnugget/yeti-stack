@@ -12,8 +12,9 @@ var path = rq('path'),
             pass: process.env.MAILPASSWORD
         }
     }));
-module.exports = function (reciever, subject, template, context, callback) {
+module.exports = function (reciever, subject, template, context) {
     //Use handlebarstemplate for mail
+    context.appname = process.env.APPNAME;
     transport.use('compile', hbs({
         viewEngine: {
             extname: '.hbs',
@@ -34,10 +35,9 @@ module.exports = function (reciever, subject, template, context, callback) {
     }, function (err, response) {
         if (err) {
             console.log('Error while sending Mail to user: ' + reciever);
-            callback(err);
+            console.log(err);
         } else {
             debug('Message sent: ' + response.message);
-            callback(null);
         }
     });
 };
