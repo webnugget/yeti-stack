@@ -69,7 +69,7 @@ gulp.task('sass', function () {
     return gulp.src('client/assets/scss/app.scss')
         .pipe($.sass({
             includePaths: paths.sass,
-            outputStyle: 'nested',
+            outputStyle: 'compressed',
             errLogToConsole: true
         }))
         .pipe($.autoprefixer({
