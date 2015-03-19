@@ -34,7 +34,8 @@ app.use(cors());
 //dev-middleware
 if (process.env.MODE === 'development') {
     app.use(logger);
-    app.use(errorhandler());  
+    app.use(errorhandler()); 
+    console.log('devmode'); 
     app.use(require('connect-livereload')({    
         port:  35729  
     }));
