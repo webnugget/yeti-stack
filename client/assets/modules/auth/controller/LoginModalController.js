@@ -1,6 +1,6 @@
 'use strict';
 angular.module('auth')
-    .controller('LoginModalController', function ($scope, $element, close, roles, AuthFactory) {
+    .controller('LoginModalController', function ($scope, close, roles, AuthFactory) {
         $scope.user = {};
         $scope.login = function (user) {
             AuthFactory.login(user)
