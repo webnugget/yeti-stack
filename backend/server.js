@@ -51,6 +51,13 @@ app.use(function (err, req, res, next) {
 });
 //Routes
 app.use('/api/auth', rq('authRoutes'));
+//Enable HTML5-Mode
+app.all('/*', function (req, res) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', {
+        root: __dirname + '/../www'
+    });
+});
 //start server
 var port = process.env.PORT || 3000;
 http.createServer(app)

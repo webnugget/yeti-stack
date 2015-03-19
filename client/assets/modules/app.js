@@ -4,7 +4,7 @@
     function config($urlRouterProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/');
         $locationProvider.html5Mode({
-            enabled: false,
+            enabled: true,
             requireBase: false
         });
         $locationProvider.hashPrefix('!');
