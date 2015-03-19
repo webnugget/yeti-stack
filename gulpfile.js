@@ -130,7 +130,6 @@ gulp.task('backend:start', function () {
         ext: 'html js',
         watch: ['backend'],
         env: {
-            'NODE_ENV': 'development',
             'DEBUG': 'app:*'
         }
     })

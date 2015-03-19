@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 //CORS
 app.use(cors());
 //dev-middleware
-if (process.env.NODE_ENV === 'development') {
+if (process.env.MODE === 'development') {
     app.use(logger);
     app.use(errorhandler());  
     app.use(require('connect-livereload')({    
