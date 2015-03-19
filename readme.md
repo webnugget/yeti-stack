@@ -47,7 +47,7 @@ To create an administrative Account just run the following command from the proj
 and replace username password and email with your account Details.
 
 ##Example
-[fapp-stack.webnugget.de](https://www.fapp-stack.webnugget.de)
+[fapp-stack.webnugget.de](https://fapp-stack.webnugget.de)
 
 
 
