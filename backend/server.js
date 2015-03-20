@@ -17,7 +17,7 @@ dotenv.load();
 var app = express();
 // MongoDB
 mongoose.set('debug', false);
-mongoose.connect(process.env.DATABASE || 'localhost/fapp-stack-dev');
+mongoose.connect(process.env.DATABASE);
 mongoose.connection.on('error', function () {
     debug('Mongoose connection error');
 });
@@ -65,5 +65,5 @@ http.createServer(app)
         if (err) {
             console.log(err);
         }
-        console.log('FAPP-STACK launched on PORT ' + port);
+        console.log('YETI-STACK launched on PORT ' + port);
     });

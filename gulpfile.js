@@ -1,5 +1,5 @@
 'use strict';
-// FAPP-STACK Gulpfile
+// YETI-STACK Gulpfile
 // -------------------------------------
 // This file processes all of the assets in the "client" folder, combines them with the Foundation
 // for Apps assets, and outputs the finished files in the buildFolder (which is configurable below)

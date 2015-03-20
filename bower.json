@@ -1,7 +1,7 @@
 {
-    "name": "fapp-stack",
+    "name": "yeti-stack",
     "version": "0.0.1",
-    "description": "FAPP-STACK based on Foundation for Apps",
+    "description": "YETI-STACK Foundation for Apps powered Fullstack",
     "main": "gulpfile.js",
     "keywords": [
     "framework",

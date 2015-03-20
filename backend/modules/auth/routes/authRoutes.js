@@ -3,7 +3,7 @@ var express = rq('express'),
     authController = rq('authController'),
     jwt = require('express-jwt');
 var jwtCheck = jwt({
-    secret: process.env.SECRET || 'fapp-stack-secret'
+    secret: process.env.SECRET
 });
 var app = module.exports = express.Router();
 app.post('', authController.login);

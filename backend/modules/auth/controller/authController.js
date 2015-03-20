@@ -10,7 +10,7 @@ function createToken(user) {
     // delete properties that should not be included in token
     delete user.password;
     delete user.__v;
-    return jwt.sign(user, process.env.SECRET || 'fapp-stack-secret', {
+    return jwt.sign(user, process.env.SECRET, {
         expiresInMinutes: process.env.TOKENEXPIRATIONTIME || 1440
     });
 }

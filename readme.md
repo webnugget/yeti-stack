@@ -1,5 +1,5 @@
-#Welcome to FAPP-Stack
-FAPP-Stack is based on Foundation for Apps.
+#Welcome to YETI-Stack
+YETI-Stack is a Foundation for Apps powered Fullstack.
 
 ##Features
 <ul>
@@ -29,8 +29,8 @@ You'll need the following software installed to get started.
 
 ##Get Started
 <ol>
-	<li><code>git clone https://github.com/webnugget/fapp-stack.git </code></li>
-	<li><code>cd ./fapp-stack</code></li>
+	<li><code>git clone https://github.com/webnugget/yeti-stack.git </code></li>
+	<li><code>cd ./yeti-stack</code></li>
 	<li><code>npm install</code></li>
 	<li><code>bower install</code></li>
 	<li>rename default.env to .env <br>
@@ -47,7 +47,7 @@ To create an administrative Account just run the following command from the proj
 and replace username password and email with your account Details.
 
 ##Example
-[fapp-stack.webnugget.de](https://fapp-stack.webnugget.de)
+[yeti-stack.webnugget.de](https://yeti-stack.webnugget.de)
 
 
 
