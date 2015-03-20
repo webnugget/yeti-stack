@@ -1,7 +1,10 @@
 'use strict';
 var rq = require('rekuire'),
     User = rq('userModel'),
-    path = rq('path');
+    path = rq('path'),
+    dotenv = rq('dotenv');
+//load Enviromentvariables
+dotenv.load();
 var args = process.argv.slice(2);
 console.log('args: %s', args);
 var username = args[0];
@@ -17,8 +20,8 @@ console.log('Password: %s', password);
 console.log('Email: %s', email);
 console.log('Creating a new user in mongoDB');
 var mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE || 'localhost/fapp-stack-dev');
-mongoose.connection.on('error', function() {
+mongoose.connect(process.env.DATABASE);
+mongoose.connection.on('error', function () {
     console.log('Mongoose connection error', arguments);
 });
 mongoose.connection.once('open', function callback() {
@@ -28,7 +31,7 @@ mongoose.connection.once('open', function callback() {
     user.password = password;
     user.email = email;
     user.roles = roles;
-    user.save(function(err) {
+    user.save(function (err) {
         if (err) {
             console.log(err);
         } else {
