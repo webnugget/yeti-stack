@@ -7,7 +7,6 @@
             enabled: true,
             requireBase: false
         });
-        $locationProvider.hashPrefix('!');
     }
 
     function run() {
