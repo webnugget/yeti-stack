@@ -154,7 +154,7 @@ gulp.task('default', function () {
     // Run the server after the build
     sequence(['build', 'backend:start']);
     // Watch Sass
-    gulp.watch(['./client/assets/scss/**/*', './scss/**/*'], ['sass']);
+    gulp.watch(['./client/assets/scss/**/*.scss', './scss/**/*.scss'], ['sass']);
     // Watch JavaScript
     gulp.watch(['./client/assets/modules/**/*.js', './js/**/*'], ['uglify']);
     // Watch static files
