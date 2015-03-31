@@ -18,7 +18,7 @@
         //app modules
         'core',
         'auth',
-        'user',
+        'account',
         'usermanagement',
         //foundation
         'foundation',
