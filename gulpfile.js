@@ -10,6 +10,7 @@ var gulp = require('gulp'),
     $ = require('gulp-load-plugins')(),
     rimraf = require('rimraf'),
     sequence = require('run-sequence'),
+    glob = require('glob'),
     router = require('./bower_components/foundation-apps/bin/gulp-dynamic-routing');
 // 2. SETTINGS VARIABLES
 // - - - - - - - - - - - - - - -
@@ -17,7 +18,7 @@ var buildFolder = 'www';
 var paths = {
     // Sass will check these folders for files when you use @import.
     sass: [
-    'client/assets/scss',
+    'client/assets/scss_global',
     'bower_components/foundation-apps/scss'
     ],
     // all JS dependencies
@@ -42,6 +43,11 @@ var paths = {
     'client/assets/modules/**/*.js'
     ]
 };
+//Glob all scss folders from modules and add them to sass paths.sass
+glob.sync('./client/assets/modules/**/scss')
+    .forEach(function (folder) {
+        paths.sass.push(folder);
+    });
 // 3. TASKS
 // - - - - - - - - - - - - - - -
 // Cleans the build directory
@@ -154,7 +160,7 @@ gulp.task('default', function () {
     // Run the server after the build
     sequence(['build', 'backend:start']);
     // Watch Sass
-    gulp.watch(['./client/assets/scss/**/*.scss', './scss/**/*.scss'], ['sass']);
+    gulp.watch(['./client/assets/scss/**/*.scss', './client/assets/modules/**/scss/*.scss', './scss/**/*.scss'], ['sass']);
     // Watch JavaScript
     gulp.watch(['./client/assets/modules/**/*.js', './js/**/*'], ['uglify']);
     // Watch static files
