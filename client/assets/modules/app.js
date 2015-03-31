@@ -15,6 +15,7 @@
     angular.module('application', [
         'ui.router',
         'ngAnimate',
+        'xeditable',
         //app modules
         'core',
         'auth',

@@ -28,6 +28,7 @@ var paths = {
     'bower_components/tether/tether.js',
     'bower_components/lodash/lodash.min.js',
     'bower_components/angular/angular.min.js',
+    'bower_components/angular-xeditable/dist/js/xeditable.min.js',
     'bower_components/angular-modal-service/dst/angular-modal-service.min.js',
     'bower_components/a0-angular-storage/dist/angular-storage.min.js',
     'bower_components/angular-jwt/dist/angular-jwt.min.js',
