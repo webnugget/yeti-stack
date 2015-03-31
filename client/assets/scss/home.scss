@@ -2,10 +2,10 @@
 #home{
 	background: url('/assets/images/yetistack-home-background.jpg');
 	background-size:cover;
-	color:#f6f6f6;
+	color:$smoke;
 
 	h1,h2,h3,h4,h5,h6,a,small{
-		color: #f6f6f6;
+		color: $smoke;
 	}
 	#content{
 		background-color: rgba(0, 0, 0, 0.4);
