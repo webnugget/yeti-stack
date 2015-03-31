@@ -2,7 +2,4 @@
 @import "foundation";
 @import "../../../bower_components/font-awesome/scss/font-awesome.scss";
 @import "colors";
-@import "admin"; 
-@import "home";
-@import "auth";
-@import "usermanagement";
+@import "../modules/**/scss/module.scss";

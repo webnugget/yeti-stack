@@ -43,11 +43,6 @@ var paths = {
     'client/assets/modules/**/*.js'
     ]
 };
-//Glob all scss folders from modules and add them to sass paths.sass
-glob.sync('./client/assets/modules/**/scss')
-    .forEach(function (folder) {
-        paths.sass.push(folder);
-    });
 // 3. TASKS
 // - - - - - - - - - - - - - - -
 // Cleans the build directory
@@ -72,7 +67,14 @@ gulp.task('copy', function () {
 });
 // Compiles Sass
 gulp.task('sass', function () {
-    return gulp.src('client/assets/scss/app.scss')
+    return gulp.src('client/assets/scss_global/app.scss')
+        .pipe($.cssGlobbing({
+            extensions: ['.scss'],
+            scssImportPath: {
+                leading_underscore: false,
+                filename_extension: false
+            }
+        }))
         .pipe($.sass({
             includePaths: paths.sass,
             outputStyle: 'compressed',
