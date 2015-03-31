@@ -4,5 +4,13 @@ url: /admin
 requiresLogin: true
 requiresRole: 'admin'
 ---
-<h1>Admin-Section</h1>
-<p>This section is only visible if you are admin.</p>
+<div id="admin" class="grid-block vertical">
+	<h1 class="grid-content shrink">Admin</h1>
+
+	<div class="grid-content" id="content">
+		<ul class="no-bullet">
+			<li ui-sref="usermanagement"><i class="fa fa-users"></i>&nbsp;&nbsp;Usermanagement</li>
+		</ul>
+	</div>
+	
+</div>
