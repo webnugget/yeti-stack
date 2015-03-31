@@ -7,13 +7,14 @@
 			<div class="grid-content">
 				<div class="card">
 					
-					<div class="card-divider">
+					<div class="card-divider" editable-text="user.username" onaftersave="UsermanagementFactory.updateUser(user)">
 						{{user.username}}
 					</div>
 					<div class="card-section">
 						<h3>Details</h3>
 						<ul class="no-bullet">
-							<li><strong>email: </strong> {{user.email}}</li>
+							<li editable-text="user.email" onaftersave="UsermanagementFactory.updateUser(user)"><strong>email: </strong> {{user.email}}</li>
+							
 							<li><strong>registered: </strong> {{user.created | date:'medium'}}</li>
 						</ul>
 						<h3>Roles</h3>
@@ -21,7 +22,7 @@
 							<select size="5"
 									multiple="true" ng-model="user.roles" 
 									ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }"
-									data-ng-change="UsermanagementFactory.updateUser(user);"
+									data-ng-change="UsermanagementFactory.updateUser(user)"
 									ng-options="role as role for role in UsermanagementFactory.roles">
 							</select>
 						</form>
