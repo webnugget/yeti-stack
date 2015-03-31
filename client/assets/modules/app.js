@@ -19,6 +19,7 @@
         'core',
         'auth',
         'user',
+        'usermanagement',
         //foundation
         'foundation',
         'foundation.dynamicRouting',

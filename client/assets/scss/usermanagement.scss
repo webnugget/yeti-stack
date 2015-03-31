@@ -1,0 +1,19 @@
+#usermanagement{
+	background: url('/assets/images/yetistack-auth-background.jpg');
+	background-size:cover;
+	color:$smoke;
+
+	h1,h2,h3,h4,h5,h6,a,small,label{
+		color: $smoke;
+	}
+	#content{
+		background-color: rgba(0, 0, 0, 0.4);
+		padding: 2rem 0;
+
+		.card{
+			h3{
+				color:$gray-dark;
+			}
+		}
+	}
+}

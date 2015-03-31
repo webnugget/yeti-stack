@@ -1,0 +1,33 @@
+<div id="usermanagement" class="grid-block vertical large-horizontal">
+	<div class="grid-content shrink">
+		<h1>Usermanagement</h1>
+	</div>
+	<div class="grid-block small-up-1 medium-up-2 large-up-3 expand" id="content">
+		<div class="grid-block" data-ng-repeat="user in userlist | orderBy:'username'">
+			<div class="grid-content">
+				<div class="card">
+					
+					<div class="card-divider">
+						{{user.username}}
+					</div>
+					<div class="card-section">
+						<h3>Details</h3>
+						<ul class="no-bullet">
+							<li><strong>email: </strong> {{user.email}}</li>
+							<li><strong>registered: </strong> {{user.created | date:'medium'}}</li>
+						</ul>
+						<h3>Roles</h3>
+						<form>
+							<select size="5"
+									multiple="true" ng-model="user.roles" 
+									ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 2000, 'blur': 0 } }"
+									data-ng-change="UsermanagementFactory.updateUser(user);"
+									ng-options="role as role for role in UsermanagementFactory.roles">
+							</select>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
