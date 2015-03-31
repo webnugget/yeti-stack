@@ -1,6 +1,5 @@
 'use strict';
-var _ = rq('lodash'),
-    User = rq('userModel');
+var User = rq('userModel');
 module.exports.getUserById = function (req, res) {
     User.findById(req.params.id, function (err, user) {
         if (err) {
@@ -17,7 +16,9 @@ module.exports.updateUserById = function (req, res) {
             return res.status(400)
                 .send('User not found');
         } else {
-            user = _.extend(user, req.body);
+            user.roles = req.body.roles;
+            user.username = req.body.username;
+            user.email = req.body.email;
             user.updated = Date.now();
             user.save(function (err, user) {
                 if (err) {
