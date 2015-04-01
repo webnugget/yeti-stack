@@ -10,13 +10,15 @@
     <script src="/assets/js/app.js"></script>
   </head>
   <body>
-    <div class="grid-frame vertical">
-      <div class="grid-content shrink" style="padding: 0;" data-ng-controller="NavigationController" data-ng-include="'/templates/core/navigation.html'">
+    <div id="app" class="grid-frame vertical">
+      <div class="grid-block shrink" data-ng-controller="NavigationController" data-ng-include="'/templates/core/navigation.html'">
         
       </div>
-
-          <div class="grid-block" ng-class="['ui-animation']" ui-view></div>
-
+      
+      <div id="view-container" class="grid-block">
+        <div class="grid-block" ng-class="['ui-animation']" ui-view></div>
+      </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>
