@@ -4,6 +4,7 @@ angular.module('account', ['ui.router'])
         $stateProvider.state('account', {
             url: '/account',
             templateUrl: 'templates/account/account.html',
+            controller: 'AccountController',
             data: {
                 requiresLogin: true
             },
