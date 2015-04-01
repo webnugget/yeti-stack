@@ -11,3 +11,39 @@
 		padding: 2rem 1rem;
 	}
 }
+
+#login-modal{
+	
+		animation-name: showLoginModal;
+		-webkit-animation-name: showLoginModal;	
+
+		animation-duration: 0.5s;	
+		-webkit-animation-duration: 0.5s;
+
+		animation-timing-function: ease;	
+		-webkit-animation-timing-function: ease;	
+
+		visibility: visible !important;						
+	
+	
+}
+
+@keyframes showLoginModal {
+	0% {
+		opacity: 0.0;		
+	}
+
+	100% {
+		opacity: 1;	
+	}		
+}
+
+@-webkit-keyframes showLoginModal {
+	0% {
+		opacity: 0.0;		
+	}
+
+	100% {
+		opacity: 1;	
+	}		
+}
