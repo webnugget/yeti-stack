@@ -14,7 +14,11 @@ angular.module('usermanagement', [])
                     return UsermanagementFactory.getUsers();
                 }
             },
-            templateUrl: 'templates/usermanagement/usermanagement.html'
+            templateUrl: 'templates/usermanagement/usermanagement.html',
+            animation: {
+                enter: 'slideInRight',
+                leave: 'slideOutRight'
+            }
         });
     })
     .run(function () {});

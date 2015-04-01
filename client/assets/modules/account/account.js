@@ -6,6 +6,10 @@ angular.module('account', ['ui.router'])
             templateUrl: 'templates/account/account.html',
             data: {
                 requiresLogin: true
+            },
+            animation: {
+                enter: 'slideInRight',
+                leave: 'slideOutRight'
             }
         });
     });

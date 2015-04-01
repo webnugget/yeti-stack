@@ -9,22 +9,38 @@ angular.module('auth', [
         $stateProvider.state('login', {
             url: '/login',
             controller: 'LoginController',
-            templateUrl: '/templates/auth/login.html'
+            templateUrl: '/templates/auth/login.html',
+            animation: {
+                enter: 'slideInRight',
+                leave: 'slideOutRight'
+            }
         })
             .state('resetpassword', {
                 url: '/reset/:resetToken',
                 controller: 'ResetPasswordController',
-                templateUrl: '/templates/auth/reset-password.html'
+                templateUrl: '/templates/auth/reset-password.html',
+                animation: {
+                    enter: 'slideInRight',
+                    leave: 'slideOutRight'
+                }
             })
             .state('forgotpassword', {
                 url: '/forgotpassword',
                 controller: 'ForgotPasswordController',
-                templateUrl: '/templates/auth/forgot-password.html'
+                templateUrl: '/templates/auth/forgot-password.html',
+                animation: {
+                    enter: 'slideInRight',
+                    leave: 'slideOutRight'
+                }
             })
             .state('signup', {
                 url: '/signup',
                 controller: 'SignUpController',
-                templateUrl: '/templates/auth/signup.html'
+                templateUrl: '/templates/auth/signup.html',
+                animation: {
+                    enter: 'slideInRight',
+                    leave: 'slideOutRight'
+                }
             });
         jwtInterceptorProvider.tokenGetter = function (API_URL, store, config, AuthFactory, jwtHelper) {
             var token = store.get('token');
