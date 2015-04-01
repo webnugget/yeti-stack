@@ -1,17 +1,55 @@
-<ul class="condense menu-bar">
-     <li>
-          <a ui-sref="home"><strong>YETI-Stack</strong></a>
-     </li>
-     <li>
-          <a ui-sref="home">Home</a>
-     </li>
-     <li>
-          <a ui-sref="account">Account</a>
-     </li>
-     <li data-ng-if="auth.checkRole('admin')"><a ui-sref="admin">Admin</a></li>
-     <li data-ng-if="!auth.user"><a ui-sref="login">Login</a></li>
-     <li data-ng-if="!auth.user"><a ui-sref="signup">Signup</a></li>
-     <li data-ng-if="auth.user"><a data-ng-click="auth.logout()">Logout</a></li>
-     
-     
-</ul>
+<div id="navigation"class="menu-group">
+     <div class="menu-group-left">
+          <ul class="menu-bar">
+               <li>
+                    <a ui-sref="home"><strong>YETI-Stack</strong></a>
+               </li>
+          </ul>
+     </div>
+     <div class="menu-group-right">
+          <ul class="menu-bar icon-left">
+               <li>
+                    <a ui-sref="home">
+                         <span>
+                              <i class="fa fa-home fa-fw"></i>Home
+                         </span>
+                    </a>
+               </li>
+               <li>
+                    <a ui-sref="account">
+                         <span>
+                              <i class="fa fa-user fa-fw"></i>Account
+                         </span>
+                    </a>
+               </li>
+               <li data-ng-if="auth.checkRole('admin')">
+                    <a ui-sref="admin">
+                         <span>
+                              <i class="fa fa-gear fa-fw"></i>Admin
+                         </span>
+                    </a>
+               </li>
+               <li data-ng-if="!auth.user">
+                    <a ui-sref="login">
+                         <span>
+                              <i class="fa fa-sign-in fa-fw"></i>Login
+                         </span>
+                    </a>
+               </li>
+               <li data-ng-if="!auth.user">
+                    <a ui-sref="signup">
+                         <span>
+                              <i class="fa fa-user-plus fa-fw"></i>Signup
+                         </span>
+                    </a>
+               </li>
+               <li data-ng-if="auth.user">
+                    <a data-ng-click="auth.logout()">
+                         <span>
+                              <i class="fa fa-sign-out fa-fw"></i>Logout
+                         </span>
+                    </a>
+               </li>
+          </ul>
+     </div>
+</div>
