@@ -1,8 +1,12 @@
 'use strict';
 angular.module('auth')
-    .factory('AuthFactory', function (API_URL, store, $state, $http, jwtHelper, _) {
+    .factory('AuthFactory', function (API_URL, store, $state, $http, NotificationFactory, jwtHelper, _) {
         var auth = {},
-            token = store.get('token');
+            token = store.get('token'),
+            authNotes = new NotificationFactory({
+                id: 'authNotes',
+                position: 'top-middle'
+            });
         if (token) {
             auth.user = jwtHelper.decodeToken(token);
         }
@@ -14,7 +18,11 @@ angular.module('auth')
                     $state.go('home');
                     return response;
                 }, function error(err) {
-                    return err;
+                    authNotes.addNotification({
+                        title: 'Something went wrong!',
+                        content: err.data,
+                        autoclose: 5000
+                    });
                 });
         };
         auth.newtoken = function () {
@@ -40,7 +48,11 @@ angular.module('auth')
                     auth.user = jwtHelper.decodeToken(response.data.token);
                     $state.go('home');
                 }, function error(err) {
-                    return err;
+                    authNotes.addNotification({
+                        title: 'Something went wrong!',
+                        content: err.data,
+                        autoclose: 5000
+                    });
                 });
         };
         auth.forgotPassword = function (user) {

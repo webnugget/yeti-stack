@@ -34,6 +34,7 @@ var paths = {
     'bower_components/angular-jwt/dist/angular-jwt.min.js',
     'bower_components/angular-animate/angular-animate.min.js',
     'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+    'bower_components/hammerjs/hammer.min.js',
     'bower_components/foundation-apps/js/vendor/**/*.js',
     'bower_components/foundation-apps/js/angular/**/*.js',
     '!bower_components/foundation-apps/js/angular/app.js'

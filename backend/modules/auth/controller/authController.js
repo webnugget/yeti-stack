@@ -47,7 +47,14 @@ module.exports.signUp = function (req, res) {
     delete req.body.roles;
     if (!req.body.username || !req.body.password || !req.body.email) {
         return res.status(400)
-            .send("You must send the username, password and email");
+            .send('You must send the username, password and email');
+    }
+    if (req.body.email) {
+        var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;    
+        if (!regex.test(req.body.email)) {
+            return res.status(400)
+                .send('please enter a valid email-adress');
+        }
     }
     User.find({
         username: req.body.username
@@ -55,7 +62,7 @@ module.exports.signUp = function (req, res) {
         .exec(function (err, users) {
             if (users.length) {
                 return res.status(400)
-                    .send("A user with that username already exists");
+                    .send('A user with that username already exists');
             } else {
                 var user = new User();
                 user = _.extend(user, req.body);
@@ -63,7 +70,7 @@ module.exports.signUp = function (req, res) {
                     if (err) {
                         console.log(err);
                         return res.status(500)
-                            .send("Something went wrong while creating your account");
+                            .send('Something went wrong while creating your account');
                     } else {
                         //authMailer needs following params
                         //reciever,subject,template,context,callback

@@ -12,7 +12,6 @@
         <label for="password">Password</label>
         <input type="password" id="password" ng-model="user.password" placeholder="Password">
       </div>
-      <div data-ng-if="message">{{message}}</div>
       <button type="submit" class="button medium" ng-click="login(user)">Submit</button>
     </form>
     <a ui-sref="signup()">Click here to Signup</a><br><br>

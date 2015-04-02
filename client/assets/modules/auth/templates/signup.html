@@ -16,7 +16,6 @@
         <label for="extra">E-Mail</label>
         <input type="text"  id="email" ng-model="user.email" placeholder="E-Mailadress">
       </div>
-      <div data-ng-if="message">{{message}}</div>
       <button type="submit" class="button medium" ng-click="createUser(user)">Submit</button>
     </form>
     <a ui-sref="login()">Click here to Login</a>
