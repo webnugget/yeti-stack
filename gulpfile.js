@@ -10,8 +10,7 @@ var gulp = require('gulp'),
     $ = require('gulp-load-plugins')(),
     rimraf = require('rimraf'),
     sequence = require('run-sequence'),
-    glob = require('glob'),
-    router = require('./bower_components/foundation-apps/bin/gulp-dynamic-routing');
+    router = require('front-router');
 // 2. SETTINGS VARIABLES
 // - - - - - - - - - - - - - - -
 var buildFolder = 'www';
