@@ -1,9 +1,8 @@
-
-# Welcome to YETI-Stack
-
 # DEPRECATED: THIS PROJECT IS NO LONGER MAINTAINED
 
 
+
+# Welcome to YETI-Stack
 
 YETI-Stack is a Foundation for Apps powered Fullstack.
 
@@ -22,6 +21,7 @@ YETI-Stack is a Foundation for Apps powered Fullstack.
 	<li>stylesheets compiled with  lightning fast gulp-sass</li>
 	<li>livereload in development</li>
 </ul>
+
 ## Requirements
 
 You'll need the following software installed to get started.
