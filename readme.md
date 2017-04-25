@@ -1,7 +1,13 @@
-#Welcome to YETI-Stack
+
+# Welcome to YETI-Stack
+
+# DEPRECATED: THIS PROJECT IS NO LONGER MAINTAINED
+
+
+
 YETI-Stack is a Foundation for Apps powered Fullstack.
 
-##Features
+## Features
 <ul>
 	<li>stateless authentication via JWT</li>
 	<li>rolebased Authorization</li>
@@ -27,7 +33,7 @@ You'll need the following software installed to get started.
   * [Gulp](http://gulpjs.com/) and [Bower](http://bower.io): Run `[sudo] npm install -g gulp bower`
 
 
-##Get Started
+## Get Started
 <ol>
 	<li><code>git clone https://github.com/webnugget/yeti-stack.git </code></li>
 	<li><code>cd ./yeti-stack</code></li>
@@ -39,14 +45,14 @@ You'll need the following software installed to get started.
 	<li>open <a href="http://localhost:3000">http://localhost:3000</a> in your browser</li>
 </ol>
 
-##Create Admin-User
+## Create Admin-User
 To create an administrative Account just run the following command from the project-root.
 
 ```node createAdmin.js username password email```
 
 and replace username password and email with your account Details.
 
-##Example
+## Example
 [yeti-stack.webnugget.de](https://yeti-stack.webnugget.de)
 
 
